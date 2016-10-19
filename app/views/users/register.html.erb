@@ -1,0 +1,15 @@
+<form class="" action="/create" method="post">
+  <input type="text" name="email" id="Email">
+  <input type="text" name="name" id="Name">
+  <input type="text" name="password" id="Password">
+  <input type="text" name="password_confirmation" id="Password Confirmation">
+  <input type="submit" value="Join">
+</form>
+
+<% if flash[:error] %>
+  <% flash[:error].each do |f| %>
+    <p>
+      <%= f%>
+    </p>
+  <% end %>
+<% end %>

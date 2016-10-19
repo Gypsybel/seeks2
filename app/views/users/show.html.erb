@@ -1,0 +1,20 @@
+<%= @u.name %>
+<a href="/edit/<%=@u.id%>">Edit Profile</a>
+<% @secrets.each do |s| %>
+  <p>
+    <%= s.content %> <a href="/delete" data-method="delete"></a>
+  </p>
+  <p>
+    <%= s.likes.count %> likes
+  </p>
+  <form action="/secret/delete/<%=s.id%>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Delete</button>
+  </form>
+<% end %>
+<form action="/secret/create/<%=@u.id%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="text" name="content" id="New Secret">
+  <input type="submit" value="Create Secret">
+</form>
